@@ -1,0 +1,32 @@
+/* Game Levels */
+
+#levels-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.level-container {
+  text-align: center;
+  margin: 0 20px 30px;
+  & img {
+    object-fit: cover;
+  }
+  & label {
+    display: block;
+    margin: 20px 0;
+    font-size: clamp(1rem, 4vw, 4vh);
+  }
+}
+
+.level-frame {
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover {
+    animation: backlight 0.2s linear forwards;
+  }
+}

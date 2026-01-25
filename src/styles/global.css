@@ -1,0 +1,110 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS at-rules */
+
+@font-face {
+  font-family: "Freeman";
+  src: url("@/assets/fonts/Freeman/Freeman-Regular.ttf");
+}
+
+@keyframes backlight {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(0, 123, 255, 1),
+      0 0 40px rgba(0, 123, 255, 0.7);
+  }
+}
+
+/* Page Sections */
+
+body {
+  font-family: "Freeman", sans-serif;
+  background-color: #e1e1e1;
+  color: #002e4c;
+}
+
+header {
+  background: #1c8cdb;
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+  height: 15vh;
+  & h1 {
+    font-size: clamp(1.5rem, 6vw, 6vh);
+    line-height: 1.2;
+  }
+}
+
+nav {
+  background-color: #002e4c;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 50px;
+  box-shadow: 0 8px 30px gray;
+  & ul li {
+    display: inline;
+    margin: 0 20px;
+    & a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+main {
+  margin: 50px;
+  padding: calc(15vh + 40px) 0 50px;
+}
+
+footer {
+  background: #1c8cdb;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0 -8px 30px gray;
+  & .copyright {
+    position: absolute;
+    left: 1em;
+  }
+  & ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    & li {
+      margin: 10px;
+    }
+  }
+}
+
+/* Globally Used Styles */
+
+.item-hover {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.header-and-nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.head-text {
+  & label {
+    font-size: clamp(1rem, 3.5vw, 3.5vh);
+  }
+}
