@@ -14,12 +14,12 @@ const GamePage = () => {
     const initializeGame = async () => {
       try {
         const currentGame = await gameService.getCurrGame();
-        if (Object.keys(currentGame).length !== 0) {
-          setGameState(currentGame);
-        } else {
+        if (Object.keys(currentGame).length === 0) {
           const level = searchParams.get("level") || "Movies";
           const gameData = await gameService.initGame(level);
           setGameState(gameData);
+        } else {
+          setGameState(currentGame);
         }
         setLoading(false);
       } catch (err) {

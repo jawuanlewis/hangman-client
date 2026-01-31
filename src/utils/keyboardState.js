@@ -1,6 +1,5 @@
 const KEYBOARD_STATE = "keyboard_disabled_keys";
 
-// Retrieve all disabled keyboard letters
 export const getDisabledKeys = () => {
   try {
     const saved = sessionStorage.getItem(KEYBOARD_STATE);
@@ -11,7 +10,6 @@ export const getDisabledKeys = () => {
   }
 };
 
-// Save a disabled key if the user guesses it
 export const saveDisabledKey = (letter) => {
   try {
     const currentDisabled = getDisabledKeys();
@@ -24,7 +22,6 @@ export const saveDisabledKey = (letter) => {
   }
 };
 
-// For starting a new round
 export const resetKeyboardState = () => {
   try {
     sessionStorage.removeItem(KEYBOARD_STATE);

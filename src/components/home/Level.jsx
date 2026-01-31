@@ -5,7 +5,12 @@ const Level = ({ image, title }) => {
   return (
     <div className="level-container">
       <Link to={`/game?level=${title}`}>
-        <img src={image} className="level-frame item-hover" id={title} />
+        <img
+          src={image}
+          className="level-frame item-hover"
+          id={title}
+          alt={title}
+        />
       </Link>
       <label>{title}</label>
     </div>

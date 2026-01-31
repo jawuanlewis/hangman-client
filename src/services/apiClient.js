@@ -11,7 +11,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to attach JWT token
+// Attach JWT
 api.interceptors.request.use(
   (config) => {
     const token = tokenService.getToken();
@@ -25,7 +25,7 @@ api.interceptors.request.use(
   },
 );
 
-// Response interceptor for error handling
+// Error handling
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
@@ -35,7 +35,6 @@ api.interceptors.response.use(
       data: error.response?.data,
     });
 
-    // Clear token on 401 Unauthorized (expired or invalid token)
     if (error.response?.status === 401) {
       tokenService.clearToken();
     }

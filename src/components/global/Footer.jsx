@@ -16,7 +16,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/jawuan-lewis"
             rel="noopener noreferrer"
           >
-            <img src={linkedinLogo} className="item-hover" />
+            <img src={linkedinLogo} className="item-hover" alt="LinkedIn" />
           </a>
         </li>
         <li>
@@ -25,7 +25,7 @@ const Footer = () => {
             href="https://github.com/jawuanlewis"
             rel="noopener noreferrer"
           >
-            <img src={githubLogo} className="item-hover" />
+            <img src={githubLogo} className="item-hover" alt="GitHub" />
           </a>
         </li>
         <li>
@@ -34,7 +34,7 @@ const Footer = () => {
             href="https://www.instagram.com"
             rel="noopener noreferrer"
           >
-            <img src={instagramLogo} className="item-hover" />
+            <img src={instagramLogo} className="item-hover" alt="Instagram" />
           </a>
         </li>
         <li>
@@ -43,7 +43,7 @@ const Footer = () => {
             href="https://www.facebook.com"
             rel="noopener noreferrer"
           >
-            <img src={facebookLogo} className="item-hover" />
+            <img src={facebookLogo} className="item-hover" alt="Facebook" />
           </a>
         </li>
       </ul>

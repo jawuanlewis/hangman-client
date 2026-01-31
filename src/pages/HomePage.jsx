@@ -6,7 +6,7 @@ const HomePage = () => {
     <main>
       <section>
         <div className="head-text">
-          <label>Welcome! Choose a level to play below:</label>
+          <h2>Welcome! Choose a level to play below:</h2>
         </div>
         <br></br>
         <br></br>
