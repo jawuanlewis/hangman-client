@@ -1,10 +1,8 @@
 import api from "./apiClient";
 import { tokenService } from "./tokenService";
-import { resetKeyboardState } from "@/utils/keyboardState";
 
 export const gameService = {
   initGame: async (level) => {
-    resetKeyboardState();
     tokenService.clearToken();
 
     const response = await api.post("/games", { level });
@@ -28,8 +26,6 @@ export const gameService = {
   },
 
   endGame: async () => {
-    resetKeyboardState();
-
     if (tokenService.hasToken()) {
       try {
         await api.delete("/games");

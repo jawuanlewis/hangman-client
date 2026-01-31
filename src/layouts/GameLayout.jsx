@@ -39,7 +39,10 @@ const GameLayout = ({ gameState, setGameState }) => {
       {gameState.gameOver ? (
         <GameOver level={gameState.level} replay={handleReplay} />
       ) : (
-        <Keyboard onGuess={handleGuess} />
+        <Keyboard
+          guessedLetters={gameState.guessedLetters || []}
+          onGuess={handleGuess}
+        />
       )}
     </section>
   );
@@ -51,6 +54,7 @@ GameLayout.propTypes = {
     attempts: PropTypes.number,
     currentProgress: PropTypes.string,
     gameOver: PropTypes.bool,
+    guessedLetters: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   setGameState: PropTypes.func.isRequired,
 };
