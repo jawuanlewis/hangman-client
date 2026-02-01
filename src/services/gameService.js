@@ -1,11 +1,14 @@
 import api from "./apiClient";
 import { tokenService } from "./tokenService";
+import { validateGameResponse } from "./validation";
 
 export const gameService = {
   initGame: async (level) => {
     tokenService.clearToken();
 
-    const response = await api.post("/games", { level });
+    const response = validateGameResponse(await api.post("/games", { level }), {
+      requireToken: true,
+    });
     tokenService.setToken(response.token);
 
     return response.game;
@@ -16,12 +19,21 @@ export const gameService = {
       return {};
     }
 
-    const response = await api.get("/games");
-    return response.game;
+    try {
+      const response = validateGameResponse(await api.get("/games"));
+      return response.game;
+    } catch (error) {
+      // Token was invalid/expired or game not found - treat as no active game
+      console.warn("Failed to get current game:", error);
+      tokenService.clearToken();
+      return {};
+    }
   },
 
   makeGuess: async (letter) => {
-    const response = await api.patch("/games", { letter });
+    const response = validateGameResponse(
+      await api.patch("/games", { letter }),
+    );
     return response.game;
   },
 
