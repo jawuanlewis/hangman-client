@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 import { gameService } from "@/services/gameService";
 import PropTypes from "prop-types";
 
-const GameOver = ({ level, replay }) => {
+const GameOver = ({ level, replay, disabled = false }) => {
   const handleReplay = (e) => {
     e.preventDefault();
+    if (disabled) return;
     replay(level);
   };
 
-  const handleReset = async () => {
+  const handleReset = async (e) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
     try {
       await gameService.endGame();
     } catch (error) {
@@ -16,12 +21,14 @@ const GameOver = ({ level, replay }) => {
     }
   };
 
+  const disabledStyle = disabled ? { pointerEvents: "none", opacity: 0.6 } : {};
+
   return (
     <div id="game-end-container">
       <Link
         to={`/game?level=${level}`}
         className="item-hover"
-        style={{ backgroundColor: "#7AC860" }}
+        style={{ backgroundColor: "#7AC860", ...disabledStyle }}
         onClick={handleReplay}
       >
         Play Again
@@ -29,7 +36,7 @@ const GameOver = ({ level, replay }) => {
       <Link
         to="/"
         className="item-hover"
-        style={{ backgroundColor: "#E74747" }}
+        style={{ backgroundColor: "#E74747", ...disabledStyle }}
         onClick={handleReset}
       >
         Main Menu
@@ -41,6 +48,7 @@ const GameOver = ({ level, replay }) => {
 GameOver.propTypes = {
   level: PropTypes.string.isRequired,
   replay: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default GameOver;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { gameService } from "@/services/gameService";
 import PropTypes from "prop-types";
 import Messages from "@/components/game/Messages";
@@ -6,21 +7,33 @@ import Keyboard from "@/components/game/Keyboard";
 import GameOver from "@/components/game/GameOver";
 
 const GameLayout = ({ gameState, setGameState }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleGuess = async (letter) => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     try {
       const gameData = await gameService.makeGuess(letter);
       setGameState(gameData);
     } catch (error) {
       console.error("Error making guess:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleReplay = async (level) => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     try {
       const gameData = await gameService.initGame(level);
       setGameState(gameData);
     } catch (error) {
       console.error("Error restarting game:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -37,7 +50,11 @@ const GameLayout = ({ gameState, setGameState }) => {
       <br></br>
 
       {gameState.gameOver ? (
-        <GameOver level={gameState.level} replay={handleReplay} />
+        <GameOver
+          level={gameState.level}
+          replay={handleReplay}
+          disabled={isSubmitting}
+        />
       ) : (
         <Keyboard
           guessedLetters={gameState.guessedLetters || []}
