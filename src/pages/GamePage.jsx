@@ -21,15 +21,21 @@ const GamePage = () => {
 
         if (signal?.aborted) return;
 
-        if (Object.keys(currentGame).length === 0) {
-          const level = searchParams.get("level") || "Movies";
-          const gameData = await gameService.initGame(level);
+        const selectedLevel = searchParams.get("level") || "Movies";
+        const hasExistingGame = Object.keys(currentGame).length > 0;
+        const levelMatches =
+          hasExistingGame &&
+          currentGame.level?.toLowerCase() === selectedLevel.toLowerCase();
+
+        // Resume existing games
+        if (hasExistingGame && levelMatches) {
+          setGameState(currentGame);
+        } else {
+          const gameData = await gameService.initGame(selectedLevel);
 
           if (signal?.aborted) return;
 
           setGameState(gameData);
-        } else {
-          setGameState(currentGame);
         }
       } catch (err) {
         if (signal?.aborted) return;
