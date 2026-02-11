@@ -51,6 +51,10 @@ api.interceptors.response.use(
       tokenService.clearToken();
     }
 
+    if (status === 429) {
+      globalThis.location.href = "/disabled";
+    }
+
     if (status >= 400 && status < 500) {
       const message = data?.error || `Request failed: ${statusText}`;
       return Promise.reject(

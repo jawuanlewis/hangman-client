@@ -1,0 +1,31 @@
+.disabled-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 40vh;
+  gap: 30px;
+}
+
+.disabled-message {
+  font-size: clamp(1rem, 2.5vw, 2.5vh);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.disabled-home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Freeman", sans-serif;
+  font-size: clamp(1rem, 4vw, 4vh);
+  font-weight: bold;
+  color: #000;
+  background-color: #1c8cdb;
+  text-decoration: none;
+  width: 250px;
+  height: 80px;
+  border-radius: 10px;
+  cursor: pointer;
+}

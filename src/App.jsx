@@ -7,12 +7,14 @@ import {
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
+import DisabledPage from "./pages/DisabledPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<HomePage />} />
       <Route path="game" element={<GamePage />} />
+      <Route path="disabled" element={<DisabledPage />} />
     </Route>,
   ),
 );
