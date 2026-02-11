@@ -12,6 +12,12 @@
   src: url("@/assets/fonts/Freeman/Freeman-Regular.ttf");
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes backlight {
   0% {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0);
@@ -101,6 +107,28 @@ footer {
   width: 100%;
   top: 0;
   z-index: 1000;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 15vh - 40px - 100px);
+  margin: 50px;
+  padding-top: calc(15vh + 40px);
+  font-size: clamp(1rem, 3vw, 3vh);
+  &::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e1e1e1;
+    border-top-color: #1c8cdb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+  }
 }
 
 .head-text {
