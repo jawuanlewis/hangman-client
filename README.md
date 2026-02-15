@@ -67,7 +67,13 @@ hangman-client/
 
 ## ⚙️ Installation
 
-**NOTE:** This is a frontend-only project. In order to run it locally with full functionality, you would need a running instance of the [Hangman API](https://github.com/jawuanlewis/hangman-api). This is meant to be my own personal project, but I will still give setup instructions below.
+### Prerequisites
+
+- **Node.js** (>=18.0.0)
+- **pnpm** — install via `npm install -g pnpm`
+- A running instance of the [Hangman API](https://github.com/jawuanlewis/hangman-api) for full functionality
+
+> This is a frontend-only project. Setup instructions are provided below for reference.
 
 ### Clone the repository
 
